@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AdvanceRestAPIs.Dtos.Character;
 using AdvanceRestAPIs.Models;
 using AdvanceRestAPIs.Services.CharacterService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdvanceRestAPIs.Controllers
 {
-    [Route("api/[controller]")]
+
+    [Authorize]
+    //[AllowAnonymous]  // we add the attribute [AllowAnonymous] on top of the GetAll() method, we can call this method again without being authenticated.
+    [Route("[controller]")]
     [ApiController]
     public class CharacterController : ControllerBase
+    //One of the beauties of the ControllerBase class is that it provides a User object of type ClaimsPrincipal
     {
         public readonly ICharacterService _characterService;
         public CharacterController(ICharacterService characterService)
@@ -24,7 +30,9 @@ namespace AdvanceRestAPIs.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _characterService.GetAllCharacters());
+            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            return Ok(await _characterService.GetAllCharacters(userId));
+            //return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
