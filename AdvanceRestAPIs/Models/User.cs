@@ -12,6 +12,8 @@ namespace AdvanceRestAPIs.Models
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
+
+        //Users can have several characters but not the other way around. An RPG character can only have one user.
         public List<Character> Characters { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -42,8 +43,11 @@ namespace AdvanceRestAPIs
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICharacterService, CharacterService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            
+
 
 
             //In the ConfigureServices() method, we use AddAuthentication() with the JwtBearerDefaults.AuthenticationScheme and add some configuration options with AddJwtBearer().
