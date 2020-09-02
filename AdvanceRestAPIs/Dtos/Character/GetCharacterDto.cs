@@ -1,4 +1,5 @@
-﻿using AdvanceRestAPIs.Dtos.Weapon;
+﻿using AdvanceRestAPIs.Dtos.Skill;
+using AdvanceRestAPIs.Dtos.Weapon;
 using AdvanceRestAPIs.Models;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,9 @@ namespace AdvanceRestAPIs.Dtos.Character
 
         //we add the Weapon property of type GetWeaponDto to the GetCharacterDto. for one to one reltionship
         public GetWeaponDto Weapon { get; set; }
+
+        //we add one more property to the GetCharacterDto and that would be the Skills of type List<GetSkillsDto>.
+        //we need all the skills of the character
+        public List<GetSkillDto> Skills { get; set; }
     }
 }

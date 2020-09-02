@@ -25,5 +25,9 @@ namespace AdvanceRestAPIs.Models
 
         public Weapon Weapon { get; set; }
         public RpgClass Class { get; set; } = RpgClass.Knight;
+
+        //for field is for....many to many reletionship
+        public List<CharacterSkill> CharacterSkills { get; set; }
+
     }
 }
