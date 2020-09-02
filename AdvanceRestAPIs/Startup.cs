@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdvanceRestAPIs.Data;
 using AdvanceRestAPIs.Services.CharacterService;
+using AdvanceRestAPIs.Services.WeaponService;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -45,6 +46,7 @@ namespace AdvanceRestAPIs
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<IWeaponService, WeaponService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             
 

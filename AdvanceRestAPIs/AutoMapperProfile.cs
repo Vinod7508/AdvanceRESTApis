@@ -1,4 +1,5 @@
 ﻿using AdvanceRestAPIs.Dtos.Character;
+using AdvanceRestAPIs.Dtos.Weapon;
 using AdvanceRestAPIs.Models;
 using AutoMapper;
 using System;
@@ -15,6 +16,7 @@ namespace AdvanceRestAPIs
         {
             CreateMap<Character, GetCharacterDto>();
             CreateMap<AddCharacterDto, Character>();
+            CreateMap<Weapon, GetWeaponDto>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AdvanceRestAPIs.Models;
+﻿using AdvanceRestAPIs.Dtos.Weapon;
+using AdvanceRestAPIs.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace AdvanceRestAPIs.Dtos.Character
         public int Defense { get; set; } = 10;
         public int Intelligence { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.Knight;
+
+
+        //we add the Weapon property of type GetWeaponDto to the GetCharacterDto. for one to one reltionship
+        public GetWeaponDto Weapon { get; set; }
     }
 }
